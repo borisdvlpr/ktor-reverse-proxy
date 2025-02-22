@@ -22,6 +22,8 @@ repositories {
 }
 
 dependencies {
+    implementation("io.ktor:ktor-client-core")
+    implementation("io.ktor:ktor-client-cio")
     implementation("io.ktor:ktor-server-call-logging")
     implementation("io.ktor:ktor-server-core")
     implementation("io.ktor:ktor-server-netty")
