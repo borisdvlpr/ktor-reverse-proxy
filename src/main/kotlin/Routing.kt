@@ -23,6 +23,11 @@ fun Application.configureRouting() {
             val service = call.parameters["service"]
             val path = call.parameters.getAll("path")?.joinToString("/") ?: ""
 
+            if (blockedEndpoints.contains("/$path")) {
+                call.respond(HttpStatusCode.Forbidden, "Access to /$path is blocked.")
+                return@get
+            }
+
             if (service == null) {
                 call.respond(HttpStatusCode.BadRequest, "Missing service parameter.")
                 return@get
